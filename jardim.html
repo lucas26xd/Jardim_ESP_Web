@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Lucas Santos">
+    <meta name="generator" content="Atom, Arduino IDE">
+    <meta name="description" content="Página para controle de irrigação de um jardim vertical.">
+    <meta name="keywords" content="Jardim, HTML, CSS, Arduino, ESP 01, ESP8266">
+
+    <title>Controle de Jardim</title>
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/681/PNG/512/plant_icon-icons.com_61040.png"><!--https://cdn.icon-icons.com/icons2/681/PNG/512/plant_icon-icons.com_61040.png ou icon.png-->
+    <style type="text/css">
+      html {
+        clear: both;
+        margin: 0 auto;
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 2.5vw;
+        color: white;
+        text-align: center;
+        background-color: #B9F6CA;
+        padding: 5px;
+        background: url(http://data.1freewallpapers.com/download/growing-plant.jpg) no-repeat;/*http://data.1freewallpapers.com/download/growing-plant.jpg ou fundo.jpg*/
+        background-size: 105%;
+      }
+
+      button, #btnEnvia {
+        position: absolute;
+        left: 0;
+        border: none;
+        color: white;
+        width: 97%;
+        padding: 1.8vw 3vw;
+        margin: 0.5vw;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        background-color: #4CAF50;
+      }
+
+      #liga {
+        top: 2.8vw;
+      }
+
+      #btnEnvia {
+        top: 22vw;
+        padding: 1vw 2vw;
+      }
+
+      #desliga {
+        top: 10.8vw;
+        background-color: #F44336;
+      }
+
+      #liga:hover, #btnEnvia:hover{
+        background-color: #3C9F40;
+        cursor: pointer;
+      }
+
+      #desliga:hover{
+        background-color: #E43326;
+        cursor: pointer;
+      }
+
+      #texto {
+        position: absolute;
+        left: 2vw;
+      }
+
+      #regar, #clima, #auto {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        padding: 12vw;
+        margin: 3vw;
+        border-width: 2px;
+        border-color: black;
+        border-style: solid;
+        width:5vw;
+        height:8vw;
+        border-radius: 10px 20px;
+      }
+
+      #regar {
+        left: 0;
+      }
+
+      #clima {
+        right: 0;
+      }
+
+      #auto {
+        left: 32vw;
+      }
+
+      #formulario{
+        position: absolute;
+        top: 1.8vw;
+        left: 1.5vw;
+      }
+
+      input[type=text] {
+        width: 80%;
+        box-sizing: border-box;
+        font-size: 2vw;
+        border: none;
+        border-bottom: 2px solid green;
+        opacity: 0.9;
+      }
+
+      footer {
+        /*color: #81C784;*/
+        position:absolute;
+        top: 44vw;
+        width:99%;
+      }
+    </style>
+  </head>
+	<body>
+    <br><br>
+    <main role="main" class="container">
+      <div id="fundo">
+        <div id="regar">
+          <a href=".\?liga\"><button id="liga">LIGA</button></a>
+          <a href=".\?desliga\"><button id="desliga">DESLIGA</button></a>
+          <br><br>
+          <h3 id="texto">Status da válvula: <span style="color:red">Desligada</span></h3>
+        </div>
+        <div id="clima">
+          <h4 id="texto" style="top: 0">Previsão do Tempo</h4>
+          <br>
+          <img src="https://developer.accuweather.com/sites/default/files/14-s.png" alt="" style="position: absolute; top: 7vw; left: 8vw; width: 10vw">
+          <h5 style="position: absolute; top: 12vw; left: 2vw;"><span style="color:#80D8FF">Parcialmente ensolarado</span></h5>
+          <h4 id="texto" style="top: 16vw">Temperatura: <span style="color:#FFE57F">20ºC</span></h4>
+          <h4 id="texto" style="top: 20vw">Umidade: <span style="color:#CFD8DC">80%</span></h4>
+          <h6 style="font-size: 1.1vw; position: absolute; bottom: 0; right: 1vw"><a target="_blank" href="https://m.accuweather.com/pt/br/sobral/32239/daily-weather-forecast/32239?day=1&lang=pt-br">Análise Detalhada -></a></h4>
+        </div>
+        <a href="./config" hidden>Config -></a>
+        <div id="">
+          <form id="formulario" action="./" method="post" hidden>
+            <input type="checkbox" id="modoAuto" name="modoAuto" checked>
+            <label for="modoAuto" style="font-size: 1.8vw;">Habilitar modo Automático</label><br><br>
+            <label for="horario">Horário:</label><br>
+            <input type="text" id="horario" name="horario" value=""><br>
+            <label for="tempo">Tempo:</label><br>
+            <input type="text" id="tempo" name="tempo" value=""><br>
+            <input type="submit" name="btnEnvia" value="Enviar" id="btnEnvia">
+          </form>
+        </div>
+        <br><br>
+        <footer>
+          <p><small>Desenvolvido por <b>Lucas Santos</b> &copy; 2018 - Todos os direitos reservados.</small></p>
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>
